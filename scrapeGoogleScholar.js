@@ -54,7 +54,11 @@ async function scrapeGoogleScholar(uri) {
     // Loop through each result item
     $(".gs_ri").each((i, el) => {
       // Extract title, link, authors, and citation count
-      const title = $(el).find(".gs_rt a").text();
+      const title = $(el)
+        .find(".gs_rt a")
+        .text()
+        .trim()
+        .replace(/[^\x00-\x7F]/g, "");
       const link = $(el).find(".gs_rt a").attr("href");
       const authors = $(el)
         .find(".gs_a")
