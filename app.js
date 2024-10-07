@@ -4,9 +4,12 @@ const express = require("express");
 const path = require("path");
 const scrapeGoogleScholar = require("./scrapeGoogleScholar");
 const querystring = require("querystring");
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 // Serve the index.html file when the root route ("/") is accessed
 app.get("/", (req, res) => {
